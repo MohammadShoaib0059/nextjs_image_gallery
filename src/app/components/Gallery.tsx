@@ -32,7 +32,7 @@ export default async function Gallery({ topic = 'curated', page }: Props) {
     <>
     <section className="px-2 my-3 grid gap-2 grid-cols-gallery">
       {images.photos.map((photo) => (
-        <ImageContainer photo={photo} />
+        <ImageContainer key={photo.id} photo={photo} />
       ))}
     </section>
     <Footer {...footerProps} />
