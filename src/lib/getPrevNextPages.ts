@@ -1,11 +1,11 @@
-import { ImageResults } from "@/models/Images";
+import { ImagesResults } from "@/models/Images";
 
 function getPageNumber(url: string) {
     const { searchParams } = new URL(url)
     return searchParams.get('page')
 }
 
-export default function getPrevNextPages(images: ImageResults) {
+export default function getPrevNextPages(images: ImagesResults) {
 
     let nextPage = images?.next_page
         ? getPageNumber(images.next_page)
