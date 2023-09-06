@@ -1,27 +1,30 @@
-import type { ImageResults } from "@/models/Images";
-import { ImageSchemaWithPhotos } from "@/models/Images";
-import env from "./env";
-export default async function fetchImages(url: string): Promise<ImageResults | undefined> {
-    try{
-const res = await fetch(url,{
-    headers:{
-        Authorization: env.PEXELS_API_KEY
-    }
-})
-if(!res.ok) throw new Error('Fetch Images error!\n')
-const imageResults : ImageResults = await res.json()
-console.log(imageResults);
+import type { ImagesResults } from "@/models/Images"
+import { ImagesSchemaWithPhotos } from "@/models/Images"
+import env from "./env"
 
-// parse dta with zod Schema
+export default async function fetchImages(url: string): Promise<ImagesResults | undefined> {
+    try {
+        const res = await fetch(url, {
+            headers: {
+                Authorization: env.PEXELS_API_KEY
+            }
+        })
 
-const parsedData = ImageSchemaWithPhotos.parse
-(imageResults)
-if(parsedData.total_results === 0) return undefined
-return parsedData
+        if (!res.ok) throw new Error("Fetch Images error!\n")
 
-    }catch (e){
-// will show internimal console
-if(e instanceof Error) console.log(e.stack);
+        const imagesResults: ImagesResults = await res.json()
 
+        //console.log(imagesResults)
+
+        // Parse data with Zod schema 
+        const parsedData = ImagesSchemaWithPhotos.parse(imagesResults)
+
+        if (parsedData.total_results === 0) return undefined
+
+        return parsedData
+
+    } catch (e) {
+        // Will show in terminal console 
+        if (e instanceof Error) console.log(e.stack)
     }
 }

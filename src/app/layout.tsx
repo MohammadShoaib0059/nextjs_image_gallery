@@ -6,7 +6,7 @@ export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Next.js Image Gallery',
-  description: 'Net Ninja tutorial series by Dave Gray',
+  description: 'This application is build with Nextjs typescript',
 }
 
 export default function RootLayout({

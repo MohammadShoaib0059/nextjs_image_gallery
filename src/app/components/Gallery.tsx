@@ -1,5 +1,5 @@
 import fetchImages from "@/lib/fetchImages";
-import { ImageResults } from "@/models/Images";
+import { ImagesResults } from "@/models/Images";
 import ImageContainer from "./ImageContainer";
 import getPrevNextPages from "@/lib/getPrevNextPages"
 import Footer from "./Footer"
@@ -22,7 +22,7 @@ export default async function Gallery({ topic = 'curated', page }: Props) {
   }
 
   // const url = "https://api.pexels.com/v1/curated";
-  const images: ImageResults | undefined = await fetchImages(url);
+  const images: ImagesResults | undefined = await fetchImages(url);
   
   if (!images || images.per_page === 0) return <h2 className="m-4 text-2xl font-bold">No Images Found</h2>
     const { prevPage, nextPage } = getPrevNextPages(images)

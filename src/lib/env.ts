@@ -1,6 +1,7 @@
-import {cleanEnv ,str} from 'envalid'
+import { cleanEnv, str } from "envalid"
 
-const env = cleanEnv(process.env,{
-    PEXELS_API_KEY :str()
+const env = cleanEnv(process.env, {
+    PEXELS_API_KEY: str(),
 })
-export default env;
+
+export default env
